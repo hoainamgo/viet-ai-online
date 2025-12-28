@@ -93,17 +93,38 @@ const BloggerCore = {
     /**
      * Fetch dữ liệu từ Blogger API
      */
+    /**
+     * Fetch dữ liệu từ Blogger API (JSONP - No CORS issues)
+     */
     async fetchFeed(blogUrl, maxResults = 999) {
-        const url = `${blogUrl}/feeds/posts/default?alt=json&max-results=${maxResults}`;
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Network response was not ok');
-            const data = await response.json();
-            return data.feed.entry || [];
-        } catch (error) {
-            console.error("BloggerCore Fetch Error:", error);
-            return [];
-        }
+        // Remove trailing slash if present
+        blogUrl = blogUrl.replace(/\/$/, "");
+
+        return new Promise((resolve, reject) => {
+            // Generate unique callback name
+            const callbackName = 'blogger_cb_' + Math.random().toString(36).substr(2, 9);
+            const script = document.createElement('script');
+            const url = `${blogUrl}/feeds/posts/default?alt=json-in-script&max-results=${maxResults}&callback=${callbackName}`;
+
+            // Define global callback
+            window[callbackName] = (data) => {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                resolve(data.feed.entry || []);
+            };
+
+            // Handle errors
+            script.src = url;
+            script.onerror = (err) => {
+                delete window[callbackName];
+                if (document.body.contains(script)) document.body.removeChild(script);
+                console.error("Blogger JSONP Error:", err);
+                // Return empty array instead of rejecting to prevent breaking UI
+                resolve([]);
+            };
+
+            document.body.appendChild(script);
+        });
     }
 };
 

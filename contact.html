@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-t="contact_title">Contact - X10 Creator Kits</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        secondary: '#3f37c9',
+                        accent: '#f72585',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <main class="flex-grow pt-32 pb-20">
+        <!-- Hero Section -->
+        <div class="max-w-4xl mx-auto px-4 text-center mb-12">
+            <h1 data-t="contact_hero_title"
+                class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-pink-400 to-amber-400 bg-clip-text text-transparent">
+                We're Here to Help
+            </h1>
+            <p data-t="contact_hero_subtitle" class="text-xl text-white/70 max-w-2xl mx-auto">
+                Questions? Feedback? Just want to say hi? Drop us a line.
+            </p>
+        </div>
+
+        <!-- Contact Content -->
+        <div class="max-w-xl mx-auto px-4">
+            <div class="bg-white/[0.03] p-8 rounded-2xl border border-white/[0.05]">
+                <form class="space-y-6">
+                    <div>
+                        <label data-t="contact_name" class="block text-sm font-medium text-white/60 mb-2">Your
+                            Name</label>
+                        <input type="text"
+                            class="w-full bg-white/[0.05] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition">
+                    </div>
+                    <div>
+                        <label data-t="contact_email" class="block text-sm font-medium text-white/60 mb-2">Email
+                            Address</label>
+                        <input type="email"
+                            class="w-full bg-white/[0.05] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition">
+                    </div>
+                    <div>
+                        <label data-t="contact_subject"
+                            class="block text-sm font-medium text-white/60 mb-2">Subject</label>
+                        <select
+                            class="w-full bg-white/[0.05] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition">
+                            <option value="support">Support</option>
+                            <option value="sales">Sales</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label data-t="contact_message"
+                            class="block text-sm font-medium text-white/60 mb-2">Message</label>
+                        <textarea rows="4"
+                            class="w-full bg-white/[0.05] border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition"></textarea>
+                    </div>
+                    <button type="button"
+                        class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 rounded-lg hover:from-purple-500 hover:to-pink-500 transition"
+                        data-t="contact_btn">
+                        Send Message
+                    </button>
+                    <!-- Simple fallback -->
+                    <p class="text-center text-sm text-white/40 mt-4">
+                        Or email us directly at <a href="mailto:support@x10kits.com"
+                            class="text-purple-400 hover:text-purple-300">support@x10kits.com</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/content/company.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('x10_lang') || 'vi';
+            if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+            if (typeof COMPANY_CONTENT !== 'undefined') {
+                const c = COMPANY_CONTENT.contact;
+
+                const setText = (id, textObj) => {
+                    const el = document.querySelector(`[data-t="${id}"]`);
+                    if (el && textObj) el.textContent = textObj[lang] || textObj.en;
+                };
+
+                setText('contact_title', c.title);
+                setText('contact_hero_title', c.hero.title);
+                setText('contact_hero_subtitle', c.hero.subtitle);
+                setText('contact_name', c.form.name);
+                setText('contact_email', c.form.email);
+                setText('contact_subject', c.form.subject);
+                setText('contact_message', c.form.message);
+                setText('contact_btn', c.form.btn);
+            }
+        });
+    </script>
+</body>
+
+</html>

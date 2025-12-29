@@ -91,9 +91,6 @@ const BloggerCore = {
     },
 
     /**
-     * Fetch dữ liệu từ Blogger API
-     */
-    /**
      * Fetch dữ liệu từ Blogger API (JSONP - No CORS issues)
      */
     async fetchFeed(blogUrl, maxResults = 999) {
@@ -102,7 +99,7 @@ const BloggerCore = {
 
         return new Promise((resolve, reject) => {
             // Generate unique callback name
-            const callbackName = 'blogger_cb_' + Math.random().toString(36).substr(2, 9);
+            const callbackName = 'bloggerCallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
             const script = document.createElement('script');
             const url = `${blogUrl}/feeds/posts/default?alt=json-in-script&max-results=${maxResults}&callback=${callbackName}`;
 

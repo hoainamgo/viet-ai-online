@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-t="about_title">About - X10 Creator Kits</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        secondary: '#3f37c9',
+                        accent: '#f72585',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <main class="flex-grow pt-32 pb-20">
+        <!-- Hero Section -->
+        <div class="max-w-4xl mx-auto px-4 text-center mb-20">
+            <h1 data-t="about_hero_title"
+                class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Empowering the Individual Economy
+            </h1>
+            <p data-t="about_hero_subtitle" class="text-xl text-white/70 max-w-2xl mx-auto">
+                We believe in a future where one person, armed with the right AI tools, can build a global business.
+            </p>
+        </div>
+
+        <!-- Story Section -->
+        <div class="max-w-3xl mx-auto px-4 space-y-8 text-white/80 leading-relaxed">
+            <div>
+                <h2 data-t="about_story_title" class="text-2xl font-bold text-white mb-4">Our Story</h2>
+                <p data-t="about_story_p1" class="mb-4"></p>
+                <p data-t="about_story_p2"></p>
+            </div>
+
+            <div class="bg-white/[0.03] p-8 rounded-2xl border border-white/[0.05]">
+                <h2 data-t="about_mission_title" class="text-xl font-bold text-white mb-2">Our Mission</h2>
+                <p data-t="about_mission_desc" class="text-lg font-medium text-purple-300"></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/content/company.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('x10_lang') || 'vi';
+            if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+            if (typeof COMPANY_CONTENT !== 'undefined') {
+                const c = COMPANY_CONTENT.about;
+
+                // Helper to set text
+                const setText = (id, textObj) => {
+                    const el = document.querySelector(`[data-t="${id}"]`);
+                    if (el && textObj) el.textContent = textObj[lang] || textObj.en;
+                };
+
+                setText('about_title', c.title);
+                setText('about_hero_title', c.hero.title);
+                setText('about_hero_subtitle', c.hero.subtitle);
+                setText('about_story_title', c.story.title);
+                setText('about_story_p1', c.story.p1);
+                setText('about_story_p2', c.story.p2);
+                setText('about_mission_title', c.mission.title);
+                setText('about_mission_desc', c.mission.desc);
+            }
+        });
+    </script>
+</body>
+
+</html>

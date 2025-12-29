@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-t="privacy_title">Privacy Policy - X10 Creator Kits</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        secondary: '#3f37c9',
+                        accent: '#f72585',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <main class="flex-grow pt-32 pb-20">
+        <div class="max-w-3xl mx-auto px-4">
+            <h1 data-t="privacy_title" class="text-3xl md:text-4xl font-bold mb-4 text-white">Privacy Policy</h1>
+            <p data-t="privacy_last_updated" class="text-white/50 mb-10 text-sm">Last Updated: December 2025</p>
+
+            <div class="prose prose-invert prose-purple max-w-none bg-white/[0.03] p-8 rounded-2xl border border-white/[0.05]"
+                id="privacy-content">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/content/company.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('x10_lang') || 'vi';
+            if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+            if (typeof COMPANY_CONTENT !== 'undefined') {
+                const c = COMPANY_CONTENT.privacy;
+                const setText = (id, textObj) => {
+                    const el = document.querySelector(`[data-t="${id}"]`);
+                    if (el && textObj) el.textContent = textObj[lang] || textObj.en;
+                };
+
+                setText('privacy_title', c.title);
+                setText('privacy_last_updated', c.lastUpdated);
+
+                const contentDiv = document.getElementById('privacy-content');
+                if (contentDiv) {
+                    contentDiv.innerHTML = c.content[lang] || c.content.en;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!-- X10 Creator Kits - Shared Header/Navigation Component -->
+<nav
+    class="fixed w-full z-50 transition-all duration-300 bg-[#0f0f23]/90 backdrop-blur-md border-b border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html" class="text-xl font-bold tracking-tighter hover:opacity-80 transition">
+                    <span
+                        class="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">X10</span><span
+                        class="text-white">.Kits</span>
+                </a>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" data-t="nav_home"
+                    class="text-sm font-semibold text-white hover:text-amber-400 transition tracking-wide">Home</a>
+
+                <!-- Products Dropdown -->
+                <div class="relative group h-16 flex items-center">
+                    <button
+                        class="text-sm font-semibold text-white hover:text-amber-400 transition flex items-center gap-1 tracking-wide">
+                        <span data-t="nav_products">Products</span>
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180 text-white/70" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute top-12 left-0 w-64 bg-[#1a1a2e] border border-white/10 shadow-2xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 p-2 z-[60]">
+                        <a href="youtube.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-amber-400 transition">📺
+                                YouTube Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Viral Scripts & Thumbnails</span>
+                        </a>
+                        <a href="tiktok.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-pink-400 transition">🎵 TikTok
+                                Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Trend Hunter & Scripts</span>
+                        </a>
+                        <a href="marketing.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-blue-400 transition">🚀
+                                Marketing Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Campaigns & Copywriting</span>
+                        </a>
+                        <a href="engineer.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-indigo-400 transition">💻
+                                Engineer Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Coding Pair-Programmer</span>
+                        </a>
+                        <a href="brand.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-yellow-400 transition">🌟
+                                Brand Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Personal Branding & Voice</span>
+                        </a>
+                        <a href="writer.html"
+                            class="block px-4 py-3 text-sm rounded-lg hover:bg-white/[0.05] group/item">
+                            <span class="font-bold block text-white group-hover/item:text-teal-400 transition">✍️
+                                Writer Kit</span>
+                            <span class="text-xs text-white/50 block mt-0.5">Content Writing & Idea Gen</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="blog.html" target="_blank" data-t="nav_blog"
+                    class="text-white/90 hover:text-white transition font-medium text-sm">Blog</a>
+                <a href="community.html" target="_blank" data-t="nav_community"
+                    class="text-white/90 hover:text-white transition font-medium text-sm">Community</a>
+                <a href="docs.html" target="_blank" data-t="nav_docs"
+                    class="text-white/90 hover:text-white transition font-medium text-sm">Docs</a>
+
+                <!-- Language Switcher -->
+                <div class="relative group ml-4">
+                    <button id="lang-btn"
+                        class="flex items-center gap-2 text-xs font-bold text-white bg-white/[0.1] px-3 py-1.5 rounded-full hover:bg-white/[0.2] border border-white/10 transition">
+                        <span id="current-flag">🇺🇸</span> <span id="current-lang-name">EN</span>
+                    </button>
+                    <div
+                        class="absolute right-0 mt-2 w-36 bg-[#1a1a2e] border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[60]">
+                        <div class="p-1.5 space-y-0.5">
+                            <button onclick="setLanguage('en')"
+                                class="w-full text-left px-3 py-2 text-xs font-medium text-white/80 hover:bg-white/[0.1] hover:text-white rounded-lg flex items-center gap-3 transition">
+                                <span>🇺🇸</span> English
+                            </button>
+                            <button onclick="setLanguage('ja')"
+                                class="w-full text-left px-3 py-2 text-xs font-medium text-white/80 hover:bg-white/[0.1] hover:text-white rounded-lg flex items-center gap-3 transition">
+                                <span>🇯🇵</span> 日本語
+                            </button>
+                            <button onclick="setLanguage('ko')"
+                                class="w-full text-left px-3 py-2 text-xs font-medium text-white/80 hover:bg-white/[0.1] hover:text-white rounded-lg flex items-center gap-3 transition">
+                                <span>🇰🇷</span> 한국어
+                            </button>
+                            <button onclick="setLanguage('vi')"
+                                class="w-full text-left px-3 py-2 text-xs font-medium text-white/80 hover:bg-white/[0.1] hover:text-white rounded-lg flex items-center gap-3 transition">
+                                <span>🇻🇳</span> Tiếng Việt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="hidden md:flex ml-4">
+                <a href="https://ksmartcomes.gumroad.com" target="_blank" data-t="nav_cta"
+                    class="bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-300 hover:to-orange-300 text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition shadow-[0_0_20px_rgba(251,146,60,0.3)] hover:shadow-[0_0_25px_rgba(251,146,60,0.5)] transform hover:-translate-y-0.5">
+                    Get Full Bundle
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-white hover:text-amber-400 transition p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden pb-6 pt-2 border-t border-white/5">
+            <div class="flex flex-col space-y-1">
+                <a href="index.html"
+                    class="text-base font-medium text-white/90 hover:text-white hover:bg-white/5 transition py-3 px-2 rounded-lg">Home</a>
+                <div class="pl-4 space-y-1 border-l-2 border-white/10 ml-2 my-2">
+                    <a href="youtube.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>📺</span> YouTube Kit
+                    </a>
+                    <a href="tiktok.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>🎵</span> TikTok Kit
+                    </a>
+                    <a href="marketing.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>🚀</span> Marketing Kit
+                    </a>
+                    <a href="engineer.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>💻</span> Engineer Kit
+                    </a>
+                    <a href="brand.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>🌟</span> Brand Kit
+                    </a>
+                    <a href="writer.html"
+                        class="flex items-center gap-3 text-sm font-medium text-white/70 hover:text-white transition py-2">
+                        <span>✍️</span> Writer Kit
+                    </a>
+                </div>
+                <a href="blog.html" target="_blank"
+                    class="text-base font-medium text-white/90 hover:text-white hover:bg-white/5 transition py-3 px-2 rounded-lg">Blog</a>
+                <a href="docs.html" target="_blank"
+                    class="text-base font-medium text-white/90 hover:text-white hover:bg-white/5 transition py-3 px-2 rounded-lg">Docs</a>
+
+                <a href="https://ksmartcomes.gumroad.com" target="_blank"
+                    class="bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 px-4 py-3 rounded-xl font-bold text-center mt-4 shadow-lg shadow-orange-500/20">
+                    Get Full Bundle
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', function () {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+</script>

@@ -1,0 +1,691 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-t="page_title">Writer Kit - X10 Creator Kits</title>
+    <meta name="description" data-t="page_desc" content="AI-powered content writing and idea generation">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        secondary: '#3f37c9',
+                        accent: '#f72585',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <!-- Background gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-[#0f0f23] to-pink-900/20"></div>
+
+        <div class="relative max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text Content -->
+                <div>
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span data-kit="badge" class="text-xs font-medium text-white/70"></span>
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"><span data-kit="name"
+                            class="bg-gradient-to-r from-teal-400 via-emerald-400 to-green-400 bg-clip-text text-transparent"></span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p data-kit="heroDesc" class="text-lg md:text-xl text-white/60 mb-8"></p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#pricing"
+                            class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold text-base hover:from-amber-300 hover:to-orange-300 transition-all shadow-lg shadow-orange-500/20">
+                            <span data-kit="ctaText"></span> — <span data-kit="price"></span>
+                        </a>
+                        <a href="#agents"
+                            class="px-8 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white font-medium hover:bg-white/10 transition">
+                            <span data-t="kit_cta_see">See What's Inside</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="flex flex-wrap gap-6 text-white/40 text-xs">
+                        <span>✓ <span data-t="trust_1">Lifetime Access</span></span>
+                        <span>✓ <span data-t="trust_2">Free Updates</span></span>
+                        <span>✓ <span data-t="trust_3">Works with Claude/GPT</span></span>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Image -->
+                <div class="hidden lg:flex justify-center items-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-green-500/20 blur-3xl"></div>
+                        <img src="assets/hero-visual.png" alt="Writer Kit Preview"
+                            class="relative rounded-2xl shadow-2xl w-full max-w-md border-[6px] border-white/30 animate-float">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROBLEM/SOLUTION SECTION ========== -->
+    <section id="problem" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 data-t="problem_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-4">
+                Traditional Content Creation is Broken
+            </h2>
+            <p data-t="problem_subtitle" class="text-center text-white/50 mb-10 max-w-2xl mx-auto">
+                You need a team of specialists, but you're doing everything yourself
+            </p>
+
+            <!-- Problem cards -->
+            <div class="grid md:grid-cols-3 gap-4 mb-10">
+                <div class="bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-3xl mb-3">😫</div>
+                    <h3 data-t="problem_1_title" class="font-semibold text-white mb-2">Hours Writing Scripts</h3>
+                    <p data-t="problem_1_desc" class="text-sm text-white/50">Staring at blank page, trying to figure out
+                        hooks and structure</p>
+                </div>
+                <div class="bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-3xl mb-3">🎨</div>
+                    <h3 data-t="problem_2_title" class="font-semibold text-white mb-2">Thumbnail Guesswork</h3>
+                    <p data-t="problem_2_desc" class="text-sm text-white/50">No idea what will get clicks until you
+                        publish</p>
+                </div>
+                <div class="bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-3xl mb-3">📉</div>
+                    <h3 data-t="problem_3_title" class="font-semibold text-white mb-2">Low Retention</h3>
+                    <p data-t="problem_3_desc" class="text-sm text-white/50">Views drop after 30 seconds because
+                        structure is wrong</p>
+                </div>
+            </div>
+
+            <!-- Solution arrow -->
+            <div class="text-center text-white/20 text-4xl mb-10">↓</div>
+
+            <!-- Solution statement -->
+            <div
+                class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl p-6 border border-purple-500/20 text-center">
+                <h3 data-t="solution_title" class="text-xl font-bold text-white mb-2">What if you had 3 AI specialists?
+                </h3>
+                <p data-t="solution_desc" class="text-white/60">A Script Writer, Thumbnail Creator, and SEO Optimizer
+                    working together on every video</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== AI AGENTS SECTION ========== -->
+    <section id="agents" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 data-t="agents_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                3 Specialized AI Agents Working Together
+            </h2>
+            <p data-t="agents_subtitle" class="text-center text-white/50 mb-12">
+                Each agent is trained for a specific task in your content workflow
+            </p>
+
+            <!-- Agents Grid -->
+            <div id="agents-container" class="grid md:grid-cols-3 gap-6">
+                <!-- Agent cards will be rendered by JS -->
+                <!-- Placeholder structure: -->
+                <div
+                    class="agent-card bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08] hover:border-purple-500/30 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/20 to-pink-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        ✍️
+                    </div>
+                    <h3 data-t="agent_1_name" class="text-lg font-bold text-white mb-2">Script Writer</h3>
+                    <p data-t="agent_1_role" class="text-xs text-purple-300 mb-3">Content Structure Expert</p>
+                    <p data-t="agent_1_desc" class="text-sm text-white/50 mb-4">Creates high-retention scripts with
+                        proven hook formulas, story structures, and call-to-actions.</p>
+                    <div class="bg-white/[0.03] rounded-lg p-3 border border-white/[0.05]">
+                        <p class="text-xs text-white/40 mb-1">Example:</p>
+                        <p data-t="agent_1_example" class="text-xs text-white/70 italic">"Write script about [topic]" →
+                            Full script with hooks, timestamps, and retention triggers in 30s</p>
+                    </div>
+                </div>
+
+                <div
+                    class="agent-card bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08] hover:border-pink-500/30 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        🎨
+                    </div>
+                    <h3 data-t="agent_2_name" class="text-lg font-bold text-white mb-2">Thumbnail Creator</h3>
+                    <p data-t="agent_2_role" class="text-xs text-pink-300 mb-3">Visual CTR Specialist</p>
+                    <p data-t="agent_2_desc" class="text-sm text-white/50 mb-4">Generates thumbnail concepts with proven
+                        CTR patterns: faces, contrast, curiosity gaps.</p>
+                    <div class="bg-white/[0.03] rounded-lg p-3 border border-white/[0.05]">
+                        <p class="text-xs text-white/40 mb-1">Example:</p>
+                        <p data-t="agent_2_example" class="text-xs text-white/70 italic">"Thumbnail for [video]" → 5
+                            concepts with color palette, text overlay, and emotion triggers</p>
+                    </div>
+                </div>
+
+                <div
+                    class="agent-card bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08] hover:border-blue-500/30 transition-all group">
+                    <div
+                        class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                        🔍
+                    </div>
+                    <h3 data-t="agent_3_name" class="text-lg font-bold text-white mb-2">SEO Optimizer</h3>
+                    <p data-t="agent_3_role" class="text-xs text-blue-300 mb-3">Discovery & Ranking</p>
+                    <p data-t="agent_3_desc" class="text-sm text-white/50 mb-4">Optimizes titles, descriptions, tags for
+                        YouTube algorithm. Finds trending keywords.</p>
+                    <div class="bg-white/[0.03] rounded-lg p-3 border border-white/[0.05]">
+                        <p class="text-xs text-white/40 mb-1">Example:</p>
+                        <p data-t="agent_3_example" class="text-xs text-white/70 italic">"Optimize [video]" → Title
+                            variants, description with timestamps, 30 ranked tags</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section id="features" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 data-t="features_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                Top Features That Set This Kit Apart
+            </h2>
+            <p data-t="features_subtitle" class="text-center text-white/50 mb-12">
+                Designed for creators who want results, not just prompts
+            </p>
+
+            <!-- Features Grid -->
+            <div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Feature cards - placeholders -->
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🎯</div>
+                    <h3 data-t="feat_1_title" class="font-semibold text-white mb-2">High-Retention Scripts</h3>
+                    <p data-t="feat_1_desc" class="text-sm text-white/50">Hook formulas, pattern interrupts, and
+                        engagement triggers built-in</p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">⚡</div>
+                    <h3 data-t="feat_2_title" class="font-semibold text-white mb-2">30-Second Generation</h3>
+                    <p data-t="feat_2_desc" class="text-sm text-white/50">Full scripts with timestamps in under a minute
+                    </p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🧠</div>
+                    <h3 data-t="feat_3_title" class="font-semibold text-white mb-2">Context-Aware</h3>
+                    <p data-t="feat_3_desc" class="text-sm text-white/50">Learns your channel style and audience
+                        preferences</p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">📊</div>
+                    <h3 data-t="feat_4_title" class="font-semibold text-white mb-2">Trend Analysis</h3>
+                    <p data-t="feat_4_desc" class="text-sm text-white/50">Find what's working in your niche right now
+                    </p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🎨</div>
+                    <h3 data-t="feat_5_title" class="font-semibold text-white mb-2">Thumbnail Templates</h3>
+                    <p data-t="feat_5_desc" class="text-sm text-white/50">Proven CTR patterns and color psychology</p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🔄</div>
+                    <h3 data-t="feat_6_title" class="font-semibold text-white mb-2">Workflow Integration</h3>
+                    <p data-t="feat_6_desc" class="text-sm text-white/50">Works with Claude Code, Cursor, VS Code</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FILE STRUCTURE SECTION ========== -->
+    <section id="structure" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 data-t="structure_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                📂 See Exactly What You're Getting
+            </h2>
+            <p data-t="structure_subtitle" class="text-center text-white/50 mb-8">
+                Complete file structure of the YouTube Kit
+            </p>
+
+            <!-- File Tree -->
+            <div class="bg-white/[0.03] rounded-xl p-6 border border-white/[0.08] font-mono text-sm">
+                <div id="file-tree" class="text-white/70">
+                    <!-- File tree will be rendered here -->
+                    <pre class="whitespace-pre-wrap">
+x10-youtube-kit/
+├── .claude/
+│   ├── commands/
+│   │   ├── script.md
+│   │   ├── thumbnail.md
+│   │   ├── seo.md
+│   │   └── brainstorm.md
+│   ├── settings.json
+│   └── CLAUDE.md
+├── prompts/
+│   ├── hooks/
+│   ├── structures/
+│   └── templates/
+├── examples/
+│   └── sample-scripts/
+├── README.md
+└── LICENSE.key
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPARISON SECTION ========== -->
+    <section id="comparison" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 data-t="compare_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-8">
+                YouTube Kit vs Traditional Methods
+            </h2>
+
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="text-left py-4 px-4 text-white/50 font-medium" data-t="compare_col_aspect">Aspect
+                            </th>
+                            <th class="text-center py-4 px-4 text-red-400 font-medium" data-t="compare_col_before">
+                                Before</th>
+                            <th class="text-center py-4 px-4 text-green-400 font-medium" data-t="compare_col_after">With
+                                YouTube Kit</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-white/70" id="comparison-table-body">
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4" data-t="compare_row_1_aspect">Script Writing</td>
+                            <td class="py-4 px-4 text-center text-red-400/70" data-t="compare_row_1_before">2-4 hours
+                            </td>
+                            <td class="py-4 px-4 text-center text-green-400" data-t="compare_row_1_after">30 seconds
+                            </td>
+                        </tr>
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4" data-t="compare_row_2_aspect">Thumbnail Ideas</td>
+                            <td class="py-4 px-4 text-center text-red-400/70" data-t="compare_row_2_before">Random
+                                guessing</td>
+                            <td class="py-4 px-4 text-center text-green-400" data-t="compare_row_2_after">5 proven
+                                concepts</td>
+                        </tr>
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4" data-t="compare_row_3_aspect">SEO Optimization</td>
+                            <td class="py-4 px-4 text-center text-red-400/70" data-t="compare_row_3_before">Manual
+                                research</td>
+                            <td class="py-4 px-4 text-center text-green-400" data-t="compare_row_3_after">Auto-optimized
+                            </td>
+                        </tr>
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4" data-t="compare_row_4_aspect">Retention Hooks</td>
+                            <td class="py-4 px-4 text-center text-red-400/70" data-t="compare_row_4_before">Trial &
+                                error</td>
+                            <td class="py-4 px-4 text-center text-green-400" data-t="compare_row_4_after">Proven
+                                formulas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 data-t="pricing_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                Invest in Your Content Creation
+            </h2>
+            <p data-t="pricing_subtitle" class="text-center text-white/50 mb-10">
+                Pays for itself on your first video
+            </p>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <!-- Individual Kit -->
+                <div class="bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08]">
+                    <h3 data-t="pricing_kit_name" class="text-lg font-bold text-white mb-2">YouTube Kit</h3>
+                    <div class="mb-4">
+                        <span data-t="pricing_kit_price" class="text-4xl font-bold text-white">$59</span>
+                        <span class="text-white/40 text-sm ml-2">one-time</span>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-white/70">
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_kit_feat_1">3 Specialized AI Agents</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_kit_feat_2">10+ Script Templates</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_kit_feat_3">Thumbnail Concepts Generator</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_kit_feat_4">SEO Optimization Tools</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_kit_feat_5">Lifetime Updates</span></li>
+                    </ul>
+                    <a href="https://ksmartcomes.gumroad.com" target="_blank"
+                        class="block w-full py-3 text-center rounded-xl bg-white/[0.05] hover:bg-white/10 border border-white/10 text-white font-medium transition">
+                        <span data-t="pricing_kit_cta">Get YouTube Kit</span>
+                    </a>
+                </div>
+
+                <!-- Bundle Upsell -->
+                <div
+                    class="relative bg-gradient-to-b from-purple-600/20 to-pink-600/20 rounded-2xl p-6 border border-purple-500/30">
+                    <div
+                        class="absolute -top-3 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                        BEST VALUE
+                    </div>
+                    <h3 data-t="pricing_bundle_name" class="text-lg font-bold text-white mb-2">Full X10 Bundle</h3>
+                    <div class="mb-4">
+                        <span data-t="pricing_bundle_price" class="text-4xl font-bold text-white">$99</span>
+                        <span class="text-white/40 text-sm line-through ml-2">$214</span>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-white/70">
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_bundle_feat_1">All 6 Kits Included</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_bundle_feat_2">15+ AI Agents Total</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_bundle_feat_3">50+ Templates & Workflows</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_bundle_feat_4">Priority Support</span></li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> <span
+                                data-t="pricing_bundle_feat_5">All Future Kits Free</span></li>
+                    </ul>
+                    <a href="https://ksmartcomes.gumroad.com" target="_blank"
+                        class="block w-full py-3 text-center rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold hover:from-amber-300 hover:to-orange-300 transition">
+                        <span data-t="pricing_bundle_cta">Get Full Bundle</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section id="testimonials" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 data-t="testimonials_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                What Creators Are Saying
+            </h2>
+            <p data-t="testimonials_subtitle" class="text-center text-white/50 mb-10">
+                Real feedback from creators using X10 Kits
+            </p>
+
+            <!-- Testimonials Grid -->
+            <div id="testimonials-container" class="grid md:grid-cols-2 gap-6">
+                <div class="testimonial-card bg-white/[0.03] rounded-xl p-6 border border-white/[0.08]">
+                    <p data-t="testimonial_1_text" class="text-white/70 mb-4 italic">"Finally a tool that understands
+                        YouTube. My scripts went from generic to genuinely engaging. Saved me 10+ hours this week
+                        alone."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white font-bold">
+                            M</div>
+                        <div>
+                            <p data-t="testimonial_1_name" class="font-medium text-white text-sm">Mike T.</p>
+                            <p data-t="testimonial_1_role" class="text-xs text-white/50">Tech YouTuber, 50K subs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-white/[0.03] rounded-xl p-6 border border-white/[0.08]">
+                    <p data-t="testimonial_2_text" class="text-white/70 mb-4 italic">"The thumbnail concepts alone are
+                        worth the price. I used to guess what would work - now I have data-backed ideas every time."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white font-bold">
+                            S</div>
+                        <div>
+                            <p data-t="testimonial_2_name" class="font-medium text-white text-sm">Sarah L.</p>
+                            <p data-t="testimonial_2_role" class="text-xs text-white/50">Lifestyle Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section id="faq" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 data-t="faq_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                Frequently Asked Questions
+            </h2>
+            <p data-t="faq_subtitle" class="text-center text-white/50 mb-10">
+                Everything you need to know about the YouTube Kit
+            </p>
+
+            <!-- FAQ Accordion -->
+            <div id="faq-container" class="space-y-3">
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span data-t="faq_1_q">What AI tools does this work with?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p data-t="faq_1_a">Works with Claude Code, Cursor, VS Code with Roo Code extension, and any AI
+                            coding assistant that supports custom prompts.</p>
+                    </div>
+                </details>
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span data-t="faq_2_q">Do I need coding skills?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p data-t="faq_2_a">No coding required. Just copy the kit to your project folder and start using
+                            the commands. We provide step-by-step setup guides.</p>
+                    </div>
+                </details>
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span data-t="faq_3_q">How long do I have access?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p data-t="faq_3_a">Lifetime access. Pay once, use forever. All future updates included at no
+                            extra cost.</p>
+                    </div>
+                </details>
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span data-t="faq_4_q">Can I use this for client work?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p data-t="faq_4_a">Yes! Commercial license included. Use the outputs for your channel, clients,
+                            or agency work without restrictions.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA SECTION ========== -->
+    <section id="final-cta" class="py-20 bg-gradient-to-b from-[#1a1a2e] to-[#0f0f23]">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 data-t="final_cta_title"
+                class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-300 via-pink-300 to-purple-300 bg-clip-text text-transparent mb-4">
+                Ready to Transform Your YouTube Workflow?
+            </h2>
+            <p data-t="final_cta_subtitle" class="text-white/50 mb-8">
+                Join creators who are making better content, faster
+            </p>
+
+            <a href="https://ksmartcomes.gumroad.com" target="_blank"
+                class="inline-block px-10 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold text-lg hover:from-amber-300 hover:to-orange-300 transition-all shadow-lg shadow-orange-500/20">
+                <span data-t="final_cta_button">Get Writer Kit — $19</span>
+            </a>
+
+            <p data-t="final_cta_guarantee" class="text-white/50 text-xs mt-4">
+                15-day money-back guarantee • Instant access • Lifetime updates
+            </p>
+        </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+
+    <!-- i18n (to be loaded) -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Writer Content -->
+    <script src="js/content/writer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('x10_lang') || 'vi';
+            if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+            if (typeof WRITER_CONTENT !== 'undefined') {
+                const content = WRITER_CONTENT;
+                const c = content; // alias
+
+                // 1. Hero & Basic Info
+                ['badge', 'name', 'heroDesc', 'price', 'ctaText'].forEach(key => {
+                    const elements = document.querySelectorAll(`[data-kit="${key}"]`);
+                    elements.forEach(el => {
+                        if (c[key]) el.textContent = c[key][lang] || c[key].en;
+                    });
+                });
+
+                // Update Pricing Card Kit Name & Price
+                const priceName = document.querySelector('[data-t="pricing_kit_name"]');
+                if (priceName) priceName.textContent = c.name[lang] || c.name.en;
+
+                const priceVal = document.querySelector('[data-t="pricing_kit_price"]');
+                if (priceVal) priceVal.textContent = c.price[lang] || c.price.en;
+
+                // 2. Problem & Solution
+                if (c.problem) {
+                    const pTitle = document.querySelector('[data-t="problem_title"]');
+                    if (pTitle) pTitle.textContent = (lang === 'vi') ? "Viết lách kiểu cũ quá cô đơn" : "Traditional Writing is Lonely";
+                    const pDesc = document.querySelector('[data-t="problem_subtitle"]');
+                    if (pDesc) pDesc.textContent = c.problem[lang] || c.problem.en;
+                }
+                if (c.solution) {
+                    const sTitle = document.querySelector('[data-t="solution_title"]');
+                    if (sTitle) sTitle.textContent = (lang === 'vi') ? "Giải pháp: Team Content AI" : "The Solution: Your AI Content Team";
+                    const sDesc = document.querySelector('[data-t="solution_desc"]');
+                    if (sDesc) sDesc.textContent = c.solution[lang] || c.solution.en;
+                }
+
+                // 3. Agents
+                const agentsContainer = document.getElementById('agents-container');
+                if (agentsContainer && c.agents) {
+                    const agentData = c.agents[lang] || c.agents.en;
+                    agentsContainer.innerHTML = agentData.map(agent => `
+                        <div class="agent-card bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08] hover:border-purple-500/30 transition-all group">
+                            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">
+                                ${agent.icon}
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">${agent.name}</h3>
+                            <p class="text-sm text-white/50 mb-4">${agent.desc}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // 4. Features
+                const featuresContainer = document.getElementById('features-container');
+                if (featuresContainer && c.features) {
+                    const featureData = c.features[lang] || c.features.en;
+                    featuresContainer.innerHTML = featureData.map(feat => `
+                        <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                            <div class="text-2xl mb-3">⚡</div>
+                            <h3 class="font-semibold text-white mb-2">${feat.title}</h3>
+                            <p class="text-sm text-white/50">${feat.desc}</p>
+                        </div>
+                    `).join('');
+                }
+
+                // 5. Comparison
+                const compBody = document.getElementById('comparison-table-body');
+                const compTitle = document.querySelector('[data-t="compare_title"]');
+                const compColAfter = document.querySelector('[data-t="compare_col_after"]');
+
+                if (c.comparison) {
+                    const compData = c.comparison[lang] || c.comparison.en;
+                    if (compTitle) compTitle.textContent = compData.title;
+                    if (compColAfter) compColAfter.textContent = (lang === 'vi') ? "Với Writer Kit" : "With Writer Kit";
+
+                    if (compBody && compData.rows) {
+                        compBody.innerHTML = compData.rows.map(row => `
+                            <tr class="border-b border-white/[0.05]">
+                                <td class="py-4 px-4 text-white">${row.aspect}</td>
+                                <td class="py-4 px-4 text-center text-red-400/70">${row.before}</td>
+                                <td class="py-4 px-4 text-center text-green-400">${row.after}</td>
+                            </tr>
+                        `).join('');
+                    }
+                }
+
+                // 6. FAQ
+                const faqContainer = document.getElementById('faq-container');
+                if (faqContainer && c.faq) {
+                    const faqData = c.faq[lang] || c.faq.en;
+                    faqContainer.innerHTML = faqData.map((item, i) => `
+                        <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                            <summary class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                                <span>${item.q}</span>
+                                <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                            </summary>
+                            <div class="px-5 pb-4 text-sm text-white/60">
+                                <p>${item.a}</p>
+                            </div>
+                        </details>
+                    `).join('');
+                }
+
+                // 7. File Structure
+                const fileTree = document.getElementById('file-tree');
+                if (fileTree && c.fileStructure) {
+                    fileTree.innerHTML = `<pre class="whitespace-pre-wrap">${c.fileStructure[lang] || c.fileStructure.en}</pre>`;
+                }
+
+                // 8. Final CTA
+                if (c.finalCta) {
+                    const fTitle = document.querySelector('[data-t="final_cta_title"]');
+                    const fSub = document.querySelector('[data-t="final_cta_subtitle"]');
+                    const fBtn = document.querySelector('[data-t="final_cta_button"]');
+
+                    if (fTitle) fTitle.textContent = c.finalCta.title[lang] || c.finalCta.title.en;
+                    if (fSub) fSub.textContent = c.finalCta.subtitle[lang] || c.finalCta.subtitle.en;
+                    if (fBtn) fBtn.textContent = c.finalCta.button[lang] || c.finalCta.button.en;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

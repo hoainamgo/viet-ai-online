@@ -1,0 +1,133 @@
+/**
+ * Blogger Headless Core Logic v1.0
+ * Bộ công cụ trích xuất và xử lý dữ liệu từ Blogger JSON API
+ */
+
+const BloggerCore = {
+    /**
+     * Trích xuất Metadata từ nội dung bài viết
+     * Quy ước: KEY: VALUE (ví dụ: PRICE: Free)
+     */
+    extractMeta(content, key) {
+        if (!content) return '';
+        const regex = new RegExp(key + ':\\s*([^\\n]+)', 'i');
+        const match = content.match(regex);
+        return match ? match[1].trim() : '';
+    },
+
+    /**
+     * Trích xuất mô tả ngắn (Snippet)
+     * Ưu tiên nội dung trước khi gặp marker ---META---
+     */
+    extractDescription(content, summary, length = 200) {
+        if (!content) return '';
+        const metaIndex = content.indexOf('---META---');
+        let text = '';
+        if (metaIndex > 0) {
+            text = content.substring(0, metaIndex).trim();
+        } else {
+            text = (summary || content).replace(/<[^>]*>/g, '').trim();
+        }
+        return text.substring(0, length) + (text.length > length ? '...' : '');
+    },
+
+    /**
+     * Lấy URL ảnh đầu tiên trong bài viết
+     */
+    extractFirstImage(content) {
+        if (!content) return '';
+        const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
+        return imgMatch ? imgMatch[1] : '';
+    },
+
+    /**
+     * Xử lý nội dung bài viết sạch (Xóa Metadata, Auto-format HTML)
+     */
+    extractFullContent(content) {
+        if (!content) return '';
+        let text = content;
+
+        // Loại bỏ các khối Metadata quy chuẩn
+        const blocks = ['---META---', '---SCREENSHOTS---', '---RELATED---', '---NOTE---'];
+        blocks.forEach(block => {
+            const regex = new RegExp(block + '[\\s\\S]*?---END---', 'g');
+            text = text.replace(regex, '');
+        });
+
+        text = text.trim();
+
+        // Auto-format cơ bản cho Markdown-like syntax
+        text = text.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+        text = text.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+        text = text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+
+        // Chuyển đổi xuống dòng thành <p> và <br>
+        const paragraphs = text.split(/\n\s*\n/);
+        return paragraphs.map(para => {
+            para = para.trim();
+            if (!para || para.startsWith('<h') || para.startsWith('<div')) return para;
+            return `<p>${para.replace(/\n/g, '<br>')}</p>`;
+        }).filter(p => p).join('\n');
+    },
+
+    /**
+     * Trích xuất danh sách Screenshots
+     */
+    extractScreenshots(content) {
+        const match = content.match(/---SCREENSHOTS---([\s\S]*?)---END---/);
+        if (match) {
+            return match[1].trim().split('\n').map(url => url.trim()).filter(url => url);
+        }
+        return [];
+    },
+
+    /**
+     * Xử lý xóa dấu tiếng Việt (Hỗ trợ Search)
+     */
+    removeAccents(str) {
+        if (!str) return '';
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/đ/g, "d").replace(/Đ/g, "D");
+    },
+
+    /**
+     * Fetch dữ liệu từ Blogger API (JSONP - No CORS issues)
+     */
+    async fetchFeed(blogUrl, maxResults = 999) {
+        // Remove trailing slash if present
+        blogUrl = blogUrl.replace(/\/$/, "");
+
+        return new Promise((resolve, reject) => {
+            // Generate unique callback name
+            const callbackName = 'bloggerCallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            const script = document.createElement('script');
+            const url = `${blogUrl}/feeds/posts/default?alt=json-in-script&max-results=${maxResults}&callback=${callbackName}`;
+
+            // Define global callback
+            window[callbackName] = (data) => {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                resolve(data.feed.entry || []);
+            };
+
+            // Handle errors
+            script.src = url;
+            script.onerror = (err) => {
+                delete window[callbackName];
+                if (document.body.contains(script)) document.body.removeChild(script);
+                console.error("Blogger JSONP Error:", err);
+                // Return empty array instead of rejecting to prevent breaking UI
+                resolve([]);
+            };
+
+            document.body.appendChild(script);
+        });
+    }
+};
+
+// Hỗ trợ cả ES Modules và Global Window
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = BloggerCore;
+} else {
+    window.BloggerCore = BloggerCore;
+}

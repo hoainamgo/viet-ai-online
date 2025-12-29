@@ -14,6 +14,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
     <!-- Custom Config -->
     <script>
         tailwind.config = {
@@ -33,96 +36,18 @@
             }
         }
     </script>
-
-    <style>
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-    </style>
 </head>
 
-<body class="bg-light text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-[#0f0f23] text-white font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-panel shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-primary tracking-tighter">X10<span
-                            class="text-slate-600">.Kits</span></a>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-sm font-medium hover:text-primary transition">Home</a>
-
-                    <!-- Products Dropdown -->
-                    <div class="relative group h-16 flex items-center">
-                        <button class="text-sm font-medium hover:text-primary transition flex items-center gap-1">
-                            <span>Products</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div
-                            class="absolute top-12 left-0 w-64 bg-white border border-slate-100 shadow-xl rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 p-2 z-[60]">
-                            <a href="index.html#kits"
-                                class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg">
-                                <span class="font-bold block">YouTube Kit</span>
-                                <span class="text-xs text-slate-400">Viral Scripts & Thumbnails</span>
-                            </a>
-                            <a href="index.html#kits"
-                                class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg">
-                                <span class="font-bold block">TikTok Kit</span>
-                                <span class="text-xs text-slate-400">Trend Hunter & Scripts</span>
-                            </a>
-                            <a href="index.html#kits"
-                                class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg">
-                                <span class="font-bold block">Marketing Kit</span>
-                                <span class="text-xs text-slate-400">Campaigns & Copywriting</span>
-                            </a>
-                            <a href="index.html#kits"
-                                class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg">
-                                <span class="font-bold block">Engineer Kit</span>
-                                <span class="text-xs text-slate-400">Coding Pair-Programmer</span>
-                            </a>
-                            <a href="index.html#kits"
-                                class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary rounded-lg">
-                                <span class="font-bold block">Brand Kit</span>
-                                <span class="text-xs text-slate-400">Personal Branding & Voice</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <a href="blog.html" class="text-sm font-bold text-primary transition">Blog</a>
-                    <a href="index.html#community"
-                        class="text-sm font-medium hover:text-primary transition">Community</a>
-                    <a href="index.html#docs" class="text-sm font-medium hover:text-primary transition">Docs</a>
-                    <a href="index.html#referrals"
-                        class="text-sm font-medium hover:text-primary transition">Referrals</a>
-                </div>
-
-                <!-- CTA -->
-                <div class="hidden md:flex">
-                    <a href="https://ksmartcomes.gumroad.com" target="_blank"
-                        class="bg-primary hover:bg-secondary text-white px-5 py-2 rounded-full font-semibold text-sm transition shadow-lg shadow-primary/30">
-                        Get Full Bundle
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Shared Header -->
+    <div data-component="header"></div>
 
     <!-- Header -->
-    <section class="pt-32 pb-12 bg-white border-b border-slate-200">
+    <section class="pt-32 pb-12 bg-[#1a1a2e] border-b border-white/[0.05]">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">News & Updates</h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">Tutorials, success stories, and product announcements.
+            <h1 class="text-4xl font-extrabold text-white mb-4">News & Updates</h1>
+            <p class="text-lg text-white/60 max-w-2xl mx-auto">Tutorials, success stories, and product announcements.
             </p>
         </div>
     </section>
@@ -133,9 +58,9 @@
             <!-- Loading -->
             <div id="loading" class="text-center py-12">
                 <div
-                    class="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin">
+                    class="inline-block w-8 h-8 border-4 border-amber-400 border-t-transparent rounded-full animate-spin">
                 </div>
-                <p class="mt-4 text-slate-500">Loading posts...</p>
+                <p class="mt-4 text-white/50">Loading posts...</p>
             </div>
 
             <!-- Grid -->
@@ -145,118 +70,11 @@
         </div>
     </main>
 
-    <!-- Premier Footer -->
-    <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 font-sans mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-                <!-- Col 1: Products -->
-                <div>
-                    <h3 class="text-white font-bold mb-4">Products</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="#kits" class="group block">
-                                <span class="group-hover:text-white transition">Engineer Kit</span>
-                                <span class="text-xs text-slate-500 block">AI Development Team</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#kits" class="group block">
-                                <span class="group-hover:text-white transition">Marketing Kit</span>
-                                <span class="text-xs text-slate-500 block">Research & Growth</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#kits" class="group block">
-                                <span class="group-hover:text-white transition">Full Bundle</span>
-                                <span class="text-xs text-slate-500 block">Engineer + Marketing + More</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
 
-                <!-- Col 2: Product -->
-                <div>
-                    <h3 class="text-white font-bold mb-4">Product</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
-                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
-                        <li><a href="docs.html" class="hover:text-white transition">Documentation</a></li>
-                        <li><a href="#" class="hover:text-white transition">Changelog</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Resources -->
-                <div>
-                    <h3 class="text-white font-bold mb-4">Resources</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="blog.html" class="hover:text-white transition">Blog</a></li>
-                        <li><a href="docs.html" class="hover:text-white transition">Guides</a></li>
-                        <li><a href="#" class="hover:text-white transition">Examples</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Community -->
-                <div>
-                    <h3 class="text-white font-bold mb-4">Community</h3>
-                    <ul class="space-y-3 text-sm mb-6">
-                        <li><a href="#" class="hover:text-white transition">Discord</a></li>
-                        <li><a href="#" class="hover:text-white transition">GitHub</a></li>
-                    </ul>
-                    <div class="flex space-x-2">
-                        <!-- Social Icons -->
-                        <a href="#"
-                            class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="#"
-                            class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
-                        <a href="#"
-                            class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Col 5: Company -->
-                <div>
-                    <h3 class="text-white font-bold mb-4">Company</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><a href="#" class="hover:text-white transition">About</a></li>
-                        <li><a href="#referrals" class="hover:text-white transition">Referral Program</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition">Privacy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-slate-800 text-center">
-                <p class="text-sm text-slate-500 mb-2">© 2025 X10 Creator Kits. Global Edition.</p>
-                <div class="flex items-center justify-center gap-2 text-xs text-slate-500">
-                    <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                    </svg>
-                    <span>Stripe Verified</span>
-                    <span>|</span>
-                    <span>SOC 2 Certified</span>
-                    <span>|</span>
-                    <span>GDPR Compliant</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
 
     <!-- Logic -->
     <script src="core_logic.js"></script>
@@ -275,7 +93,7 @@
                 container.classList.remove('hidden');
 
                 if (entries.length === 0) {
-                    container.innerHTML = `<div class="col-span-full text-center text-slate-500">No posts found.</div>`;
+                    container.innerHTML = `<div class="col-span-full text-center text-white/50">No posts found.</div>`;
                     return;
                 }
 
@@ -288,8 +106,8 @@
                     // Image
                     const imgUrl = BloggerCore.extractFirstImage(content);
                     let imgHtml = imgUrl
-                        ? `<div class="h-56 overflow-hidden bg-slate-100"><img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy"></div>`
-                        : `<div class="h-56 bg-slate-100 flex items-center justify-center text-4xl">📰</div>`;
+                        ? `<div class="h-56 overflow-hidden bg-white/[0.03]"><img src="${imgUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy"></div>`
+                        : `<div class="h-56 bg-white/[0.03] flex items-center justify-center text-4xl">📰</div>`;
 
                     // Snippet
                     const snippet = BloggerCore.extractDescription(content, entry.summary?.$t, 150);
@@ -297,17 +115,17 @@
                     const card = document.createElement('a');
                     card.href = link;
                     card.target = "_blank"; // Open actual Blogger post or detail page
-                    card.className = "group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-xl transition flex flex-col";
+                    card.className = "group bg-white/[0.03] rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/20 transition flex flex-col";
                     card.innerHTML = `
                         ${imgHtml}
                         <div class="p-6 flex-1 flex flex-col">
                             <div class="mb-3 flex items-center gap-2">
-                                <span class="bg-blue-50 text-primary text-xs font-bold px-2 py-1 rounded">News</span>
-                                <span class="text-xs text-slate-400">${date}</span>
+                                <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-2 py-1 rounded">News</span>
+                                <span class="text-xs text-white/40">${date}</span>
                             </div>
-                            <h2 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition line-clamp-2">${title}</h2>
-                            <p class="text-slate-500 text-sm mb-4 line-clamp-3 flex-1">${snippet}</p>
-                            <div class="text-primary font-semibold text-sm mt-auto">Read more →</div>
+                            <h2 class="text-xl font-bold text-white mb-3 group-hover:text-amber-300 transition line-clamp-2">${title}</h2>
+                            <p class="text-white/50 text-sm mb-4 line-clamp-3 flex-1">${snippet}</p>
+                            <div class="text-amber-400 font-semibold text-sm mt-auto">Read more →</div>
                         </div>
                     `;
                     container.appendChild(card);
@@ -315,7 +133,7 @@
 
             } catch (err) {
                 console.error(err);
-                loader.innerHTML = `<p class="text-red-500">Error loading content.</p>`;
+                loader.innerHTML = `<p class="text-red-400">Error loading content.</p>`;
             }
         }
 

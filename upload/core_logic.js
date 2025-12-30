@@ -101,6 +101,9 @@ const BloggerCore = {
             // Generate unique callback name
             const callbackName = 'bloggerCallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
             const script = document.createElement('script');
+            // Ensure HTTPS and remove trailing slash
+            blogUrl = blogUrl.replace(/\/$/, "").replace(/^http:\/\//i, 'https://');
+
             const url = `${blogUrl}/feeds/posts/default?alt=json-in-script&max-results=${maxResults}&callback=${callbackName}`;
 
             // Define global callback

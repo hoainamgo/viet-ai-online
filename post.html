@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - X10 Creator Kits</title>
+    <meta name="description" content="Read our latest insights and tutorials on X10 Creator Kits.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .blog-content h2 { @apply text-2xl font-bold mt-8 mb-4 text-white; }
+        .blog-content h3 { @apply text-xl font-bold mt-6 mb-3 text-white; }
+        .blog-content p { @apply mb-4 text-white/70 leading-relaxed; }
+        .blog-content b, .blog-content strong { @apply text-white font-semibold; }
+        .blog-content ul { @apply list-disc list-inside mb-4 text-white/70; }
+        .blog-content ol { @apply list-decimal list-inside mb-4 text-white/70; }
+        .blog-content a { @apply text-blue-400 hover:underline; }
+        .blog-content img { @apply rounded-xl my-8 max-w-full h-auto; }
+    </style>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <!-- Article Header -->
+    <section class="pt-32 pb-12 bg-[#1a1a2e] border-b border-white/[0.05]">
+        <div class="max-w-4xl mx-auto px-4">
+            <div id="post-meta" class="mb-4 flex items-center gap-3">
+                <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-2 py-1 rounded">Blog</span>
+                <span id="post-date" class="text-xs text-white/40">Loading...</span>
+            </div>
+            <h1 id="post-title" class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Loading article...</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="flex-grow py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <div id="post-image" class="mb-10 hidden">
+                <img src="" alt="" class="w-full h-auto rounded-3xl border border-white/10 shadow-2xl">
+            </div>
+            
+            <div id="post-content" class="blog-content">
+                <!-- Injected via JS -->
+                 <div class="flex justify-center py-20">
+                    <div class="w-8 h-8 border-4 border-amber-400 border-t-transparent rounded-full animate-spin"></div>
+                 </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/10">
+                <a href="blog.html" class="inline-flex items-center gap-2 text-amber-400 font-semibold hover:gap-3 transition-all">
+                    ← Back to Blog
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+
+    <!-- Logic -->
+    <script src="core_logic.js"></script>
+    <script>
+        const BLOG_URL = 'https://ksmartcomes.blogspot.com';
+
+        async function initPost() {
+            const params = new URLSearchParams(window.location.search);
+            const postId = params.get('id');
+            
+            if (!postId) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                // Fetch specific post
+                const entries = await BloggerCore.fetchFeed(BLOG_URL, 999);
+                const entry = entries.find(e => e.id.$t.includes(postId));
+
+                if (!entry) {
+                    document.getElementById('post-content').innerHTML = `<p class="text-center py-20 text-white/50">Post not found.</p>`;
+                    return;
+                }
+
+                const title = entry.title.$t;
+                const content = entry.content.$t;
+                const date = new Date(entry.published.$t).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                document.title = `${title} - X10 Creator Kits`;
+                document.getElementById('post-title').innerText = title;
+                document.getElementById('post-date').innerText = date;
+
+                // Image
+                const imgUrl = BloggerCore.extractFirstImage(content);
+                if (imgUrl) {
+                    const imgContainer = document.getElementById('post-image');
+                    const img = imgContainer.querySelector('img');
+                    img.src = imgUrl;
+                    img.alt = title;
+                    imgContainer.classList.remove('hidden');
+                }
+
+                // Process Content
+                document.getElementById('post-content').innerHTML = BloggerCore.extractFullContent(content);
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('post-content').innerHTML = `<p class="text-red-400 text-center py-20">Error loading content. Please try again later.</p>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initPost);
+    </script>
+</body>
+
+</html>

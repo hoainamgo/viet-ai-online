@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page CMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        primary: '#4361ee',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Code Editor for advanced users -->
+    <script type="module">
+        import { Octokit } from "https://esm.sh/@octokit/rest";
+        window.Octokit = Octokit;
+    </script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-darker text-white h-screen flex overflow-hidden font-sans">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-dark border-r border-white/5 flex flex-col z-20">
+        <div class="p-6">
+            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <i class="fa-solid fa-rocket mr-2"></i>KillerCMS
+            </h1>
+            <p class="text-xs text-slate-500 mt-1">Flat-file Landing Generator</p>
+        </div>
+
+        <nav class="flex-1 px-4 space-y-1">
+            <button onclick="switchTab('content')" id="tab-content"
+                class="w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors bg-blue-600/10 text-blue-400 border border-blue-600/20">
+                <i class="fa-solid fa-pen-to-square w-6"></i> Content
+            </button>
+            <button onclick="switchTab('ai')" id="tab-ai"
+                class="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:bg-white/5 transition-colors">
+                <i class="fa-solid fa-wand-magic-sparkles w-6"></i> AI Magic
+            </button>
+            <button onclick="switchTab('theme')" id="tab-theme"
+                class="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:bg-white/5 transition-colors">
+                <i class="fa-solid fa-palette w-6"></i> Theme & SEO
+            </button>
+            <button onclick="switchTab('sync')" id="tab-sync"
+                class="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:bg-white/5 transition-colors">
+                <i class="fa-brands fa-github w-6"></i> GitHub Sync
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-white/5">
+            <button onclick="exportFile()"
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-lg font-bold transition-all shadow-lg shadow-blue-500/20">
+                <i class="fa-solid fa-download mr-2"></i> Download JS
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col relative overflow-hidden">
+        <!-- Top Bar -->
+        <header class="h-16 bg-dark border-b border-white/5 flex items-center justify-between px-6 z-10">
+            <div class="flex items-center gap-4">
+                <select id="lang-select" onchange="renderForm()"
+                    class="bg-black/20 border border-white/10 rounded-lg px-3 py-1.5 text-sm focus:border-blue-500 outline-none">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="vi">🇻🇳 Tiếng Việt</option>
+                    <option value="ja">🇯🇵 Japanese</option>
+                    <option value="ko">🇰🇷 Korean</option>
+                </select>
+                <span id="unsaved-indicator" class="text-xs text-yellow-500 hidden"><i
+                        class="fa-solid fa-circle text-[8px] mr-1"></i> Unsaved changes</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button onclick="togglePreview()"
+                    class="text-slate-400 hover:text-white px-3 py-1.5 rounded-lg text-sm bg-white/5">
+                    <i class="fa-solid fa-eye mr-2"></i> Preview
+                </button>
+            </div>
+        </header>
+
+        <!-- Scrollable Area -->
+        <div class="flex-1 overflow-auto p-8 relative">
+
+            <!-- CONTENT TAB -->
+            <div id="view-content" class="max-w-3xl mx-auto space-y-8 pb-20">
+                <!-- Basic Info -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-lg font-bold mb-6 flex items-center">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center mr-3 text-sm">1</span>
+                        Basic Information
+                    </h2>
+
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Product Name</label>
+                            <input type="text" id="inp-name"
+                                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors"
+                                placeholder="e.g. Master Yoga Class">
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Price Display</label>
+                            <input type="text" id="inp-price"
+                                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors"
+                                placeholder="e.g. $49">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Tagline (Badge)</label>
+                            <input type="text" id="inp-badge"
+                                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-blue-500 outline-none transition-colors"
+                                placeholder="e.g. Best Seller 2025">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-lg font-bold mb-6 flex items-center">
+                        <span
+                            class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center mr-3 text-sm">2</span>
+                        Hero Section
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Hero Description</label>
+                            <textarea id="inp-heroDesc" rows="3"
+                                class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 focus:border-purple-500 outline-none transition-colors resize-none"
+                                placeholder="A compelling description..."></textarea>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-400 mb-2">CTA Button Text</label>
+                                <input type="text" id="inp-ctaText"
+                                    class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 focus:border-purple-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-400 mb-2">CTA Price Subtext</label>
+                                <input type="text" id="inp-ctaPrice"
+                                    class="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 focus:border-purple-500 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-lg font-bold mb-6 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center mr-3 text-sm">3</span>
+                            Features
+                        </div>
+                        <button onclick="addItem('features')"
+                            class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Feature
+                        </button>
+                    </h2>
+                    <div id="list-features" class="space-y-3">
+                        <!-- Dynamic Feature Items -->
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h2 class="text-lg font-bold mb-6 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center mr-3 text-sm">4</span>
+                            FAQ
+                        </div>
+                        <button onclick="addItem('faq')"
+                            class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg transition-colors">
+                            <i class="fa-solid fa-plus mr-1"></i> Add Question
+                        </button>
+                    </h2>
+                    <div id="list-faq" class="space-y-3">
+                        <!-- Dynamic FAQ Items -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI TAB -->
+            <div id="view-ai" class="max-w-2xl mx-auto hidden pb-20">
+                <div class="text-center mb-10">
+                    <h2
+                        class="text-3xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent mb-3">
+                        AI Magic Generator</h2>
+                    <p class="text-slate-400">Turn a simple idea into a full landing page instantly.</p>
+                </div>
+
+                <!-- Config -->
+                <div class="glass-panel p-6 rounded-2xl mb-8">
+                    <div class="flex gap-4 mb-4">
+                        <div class="flex-1">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">AI Provider</label>
+                            <select id="ai-provider"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-pink-500 outline-none">
+                                <option value="openai">OpenAI (GPT-4o)</option>
+                                <option value="gemini">Google Gemini</option>
+                            </select>
+                        </div>
+                        <div class="flex-[2]">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">API Key <span
+                                    class="text-xs text-slate-600">(Saved locally)</span></label>
+                            <input type="password" id="ai-key"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-pink-500 outline-none"
+                                placeholder="sk-...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generation Form -->
+                <div class="glass-panel p-8 rounded-2xl border-pink-500/20 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl rounded-full pointer-events-none">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block font-bold text-white mb-2">What are you selling?</label>
+                        <input type="text" id="ai-product-name"
+                            class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-pink-500 outline-none text-lg mb-4"
+                            placeholder="e.g. Yoga for Programmers">
+
+                        <label class="block font-bold text-white mb-2">Describe it briefly</label>
+                        <textarea id="ai-prompt" rows="3"
+                            class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 focus:border-pink-500 outline-none text-sm resize-none mb-4"
+                            placeholder="A 30-day video course designed to help desk workers relieve back pain and improve posture. Includes 10 min daily routines."></textarea>
+                    </div>
+
+                    <div class="mb-8">
+                        <label class="block font-bold text-white mb-3">Target Languages</label>
+                        <div class="flex flex-wrap gap-3">
+                            <label
+                                class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/10 transition">
+                                <input type="checkbox" name="ai-lang" value="en" checked class="accent-pink-500"> 🇺🇸
+                                English
+                            </label>
+                            <label
+                                class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/10 transition">
+                                <input type="checkbox" name="ai-lang" value="vi" checked class="accent-pink-500"> 🇻🇳
+                                Tiếng Việt
+                            </label>
+                            <label
+                                class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/10 transition">
+                                <input type="checkbox" name="ai-lang" value="ja" class="accent-pink-500"> 🇯🇵 Japanese
+                            </label>
+                            <label
+                                class="flex items-center gap-2 bg-white/5 px-3 py-2 rounded-lg cursor-pointer hover:bg-white/10 transition">
+                                <input type="checkbox" name="ai-lang" value="ko" class="accent-pink-500"> 🇰🇷 Korean
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="runAIMagic()" id="btn-magic"
+                        class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-pink-500/25 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Everything
+                    </button>
+
+                    <p id="ai-status" class="text-center text-sm text-slate-400 mt-4 h-5"></p>
+                </div>
+
+                <!-- Translator Tool -->
+                <div class="mt-8 glass-panel p-6 rounded-2xl">
+                    <h3 class="font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-language"></i>
+                        Add Language (Translator)</h3>
+                    <div class="flex gap-4 items-end">
+                        <div class="flex-1">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Translate content from</label>
+                            <select id="trans-source"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm outline-none">
+                                <option value="en">English</option>
+                                <option value="vi">Vietnamese</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-xs font-medium text-slate-400 mb-2">To new language</label>
+                            <select id="trans-target"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 text-sm outline-none">
+                                <option value="fr">🇫🇷 French</option>
+                                <option value="de">🇩🇪 German</option>
+                                <option value="es">🇪🇸 Spanish</option>
+                                <option value="zh">🇨🇳 Chinese</option>
+                            </select>
+                        </div>
+                        <button onclick="runAITranslate()"
+                            class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-bold h-9">
+                            Translate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THEME TAB -->
+            <div id="view-theme" class="max-w-2xl mx-auto hidden pb-20">
+                <h2 class="text-2xl font-bold mb-6">Visual Theme Editor</h2>
+
+                <div class="glass-panel p-6 rounded-2xl mb-8">
+                    <h3 class="font-bold mb-4">Brand Colors</h3>
+
+                    <!-- Color Pickers -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <input type="color" id="color-primary" value="#4361ee"
+                                class="w-12 h-12 rounded cursor-pointer bg-transparent" onchange="updateThemePreview()">
+                            <div>
+                                <h4 class="font-medium">Primary Color</h4>
+                                <p class="text-xs text-slate-400">Main brand color (Buttons, Highlights)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <input type="color" id="color-accent" value="#FF6B35"
+                                class="w-12 h-12 rounded cursor-pointer bg-transparent" onchange="updateThemePreview()">
+                            <div>
+                                <h4 class="font-medium">Accent Color</h4>
+                                <p class="text-xs text-slate-400">Call to action buttons, badges</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <input type="color" id="color-bg" value="#0f172a"
+                                class="w-12 h-12 rounded cursor-pointer bg-transparent" onchange="updateThemePreview()">
+                            <div>
+                                <h4 class="font-medium">Background Color</h4>
+                                <p class="text-xs text-slate-400">Dark mode background base</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-black/30 rounded-lg">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase mb-2">Theme Preview (Approximate)</h4>
+                        <div id="theme-preview-box"
+                            class="h-32 rounded-lg flex items-center justify-center text-center p-4 relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20 bg-gradient-to-br from-white/10 to-transparent">
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold mb-2">Headline</h2>
+                                <button class="px-4 py-2 rounded-lg font-bold shadow-lg" id="theme-preview-btn">CTA
+                                    Button</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Section -->
+                <h2 class="text-2xl font-bold mb-6">SEO Generator</h2>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-xs text-slate-400">AI analyses your content to create meta tags.</p>
+                        <button onclick="runAISEO()"
+                            class="text-xs bg-green-500/20 text-green-400 px-3 py-1 rounded-full hover:bg-green-500/30 transition">
+                            <i class="fa-solid fa-magic mr-1"></i> Auto-Generate SEO
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Meta Title</label>
+                            <input type="text" id="seo-title"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 focus:border-green-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Meta Description</label>
+                            <textarea id="seo-desc" rows="2"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 focus:border-green-500 outline-none resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">Keywords</label>
+                            <input type="text" id="seo-keywords"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 focus:border-green-500 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GITHUB SYNC TAB -->
+            <div id="view-sync" class="max-w-2xl mx-auto hidden pb-20">
+                <div class="glass-panel p-8 rounded-2xl text-center">
+                    <div
+                        class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Sync to GitHub</h2>
+                    <p class="text-slate-400 mb-8">Save your changes directly to your repository.</p>
+
+                    <div class="space-y-4 text-left">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">GitHub Token (Fine-grained or
+                                Personal Access Token)</label>
+                            <input type="password" id="gh-token"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 outline-none">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-400 mb-2">Owner (Username)</label>
+                                <input type="text" id="gh-owner"
+                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-400 mb-2">Repo Name</label>
+                                <input type="text" id="gh-repo"
+                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-400 mb-2">File Path</label>
+                            <input type="text" id="gh-path" value="js/content/product.js"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-3 py-2 outline-none">
+                        </div>
+                    </div>
+
+                    <button onclick="syncToGitHub()"
+                        class="mt-8 w-full bg-[#2da44e] hover:bg-[#2c974b] text-white py-3 rounded-xl font-bold transition-all shadow-lg">
+                        Commit & Push
+                    </button>
+                    <p id="gh-status" class="mt-4 text-sm"></p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JS Logic -->
+    <script src="js/admin-core.js"></script>
+</body>
+
+</html>

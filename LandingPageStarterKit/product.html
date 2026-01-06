@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CUSTOMIZE: Page title -->
+    <title data-t="page_title">Product Name - Your Brand</title>
+    <meta name="description" data-t="page_desc" content="Product description for SEO">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4361ee',
+                        secondary: '#3f37c9',
+                        accent: '#f72585',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-[#0f0f23] text-white font-sans antialiased">
+
+    <!-- Shared Header -->
+    <div data-component="header"></div>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <!-- Background gradient - CUSTOMIZE COLORS -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-[#0f0f23] to-pink-900/20"></div>
+
+        <div class="relative max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Text Content -->
+                <div>
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5 mb-6">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span data-kit="badge" class="text-xs font-medium text-white/70">Product Badge</span>
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                        <span data-kit="name"
+                            class="bg-gradient-to-r from-red-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                            Product Name
+                        </span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p data-kit="heroDesc" class="text-lg md:text-xl text-white/60 mb-8">
+                        Compelling product description that explains the value and benefits.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#pricing"
+                            class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold text-base hover:from-amber-300 hover:to-orange-300 transition-all shadow-lg shadow-orange-500/20">
+                            <span data-kit="ctaText">Get Product</span> — <span data-kit="price">$49</span>
+                        </a>
+                        <a href="#features"
+                            class="px-8 py-3.5 rounded-xl bg-white/[0.05] border border-white/10 text-white font-medium hover:bg-white/10 transition">
+                            <span data-t="kit_cta_see">See What's Inside</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="flex flex-wrap gap-6 text-white/40 text-xs">
+                        <span>✓ <span data-t="trust_1">Lifetime Access</span></span>
+                        <span>✓ <span data-t="trust_2">Free Updates</span></span>
+                        <span>✓ <span data-t="trust_3">Money-back Guarantee</span></span>
+                    </div>
+                </div>
+
+                <!-- Right: Hero Image -->
+                <div class="hidden lg:flex justify-center items-center">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-pink-500/20 blur-3xl"></div>
+                        <!-- CUSTOMIZE: Add your product image -->
+                        <div
+                            class="relative rounded-2xl shadow-2xl w-full max-w-md h-80 bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-[6px] border-white/30 animate-float flex items-center justify-center">
+                            <span class="text-white/30">Product Image</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section id="features" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 data-t="features_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                Key Features
+            </h2>
+            <p data-t="features_subtitle" class="text-center text-white/50 mb-12">
+                Everything you need to succeed
+            </p>
+
+            <!-- Features Grid -->
+            <div id="features-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🎯</div>
+                    <h3 class="font-semibold text-white mb-2">Feature 1</h3>
+                    <p class="text-sm text-white/50">Description of this feature and its benefits.</p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">⚡</div>
+                    <h3 class="font-semibold text-white mb-2">Feature 2</h3>
+                    <p class="text-sm text-white/50">Description of this feature and its benefits.</p>
+                </div>
+                <div class="feature-card bg-white/[0.03] rounded-xl p-5 border border-white/[0.05]">
+                    <div class="text-2xl mb-3">🚀</div>
+                    <h3 class="font-semibold text-white mb-2">Feature 3</h3>
+                    <p class="text-sm text-white/50">Description of this feature and its benefits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPARISON SECTION ========== -->
+    <section id="comparison" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 data-t="compare_title" class="text-2xl md:text-3xl font-bold text-center text-white mb-8">
+                Before vs After
+            </h2>
+
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-white/10">
+                            <th class="text-left py-4 px-4 text-white/50 font-medium">Aspect</th>
+                            <th class="text-center py-4 px-4 text-red-400 font-medium">Before</th>
+                            <th class="text-center py-4 px-4 text-green-400 font-medium">With Product</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-white/70">
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4">Metric 1</td>
+                            <td class="py-4 px-4 text-center text-red-400/70">Old Value</td>
+                            <td class="py-4 px-4 text-center text-green-400">New Value</td>
+                        </tr>
+                        <tr class="border-b border-white/[0.05]">
+                            <td class="py-4 px-4">Metric 2</td>
+                            <td class="py-4 px-4 text-center text-red-400/70">Old Value</td>
+                            <td class="py-4 px-4 text-center text-green-400">New Value</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section id="pricing" class="py-16 bg-[#1a1a2e]">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-3">
+                Get Started Today
+            </h2>
+            <p class="text-center text-white/50 mb-10">
+                One-time payment, lifetime access
+            </p>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <!-- Individual -->
+                <div class="bg-white/[0.03] rounded-2xl p-6 border border-white/[0.08]">
+                    <h3 class="text-lg font-bold text-white mb-2">Standard</h3>
+                    <div class="mb-4">
+                        <span class="text-4xl font-bold text-white">$49</span>
+                        <span class="text-white/40 text-sm ml-2">one-time</span>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-white/70">
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Feature 1</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Feature 2</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Lifetime Updates</li>
+                    </ul>
+                    <a href="#"
+                        class="block w-full py-3 text-center rounded-xl bg-white/[0.05] hover:bg-white/10 border border-white/10 text-white font-medium transition">
+                        Get Standard
+                    </a>
+                </div>
+
+                <!-- Bundle -->
+                <div
+                    class="relative bg-gradient-to-b from-purple-600/20 to-pink-600/20 rounded-2xl p-6 border border-purple-500/30">
+                    <div
+                        class="absolute -top-3 right-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                        BEST VALUE
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pro Bundle</h3>
+                    <div class="mb-4">
+                        <span class="text-4xl font-bold text-white">$99</span>
+                        <span class="text-white/40 text-sm line-through ml-2">$149</span>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-sm text-white/70">
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Everything in Standard
+                        </li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Premium Feature</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-400">✓</span> Priority Support</li>
+                    </ul>
+                    <a href="#"
+                        class="block w-full py-3 text-center rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold hover:from-amber-300 hover:to-orange-300 transition">
+                        Get Pro Bundle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section id="faq" class="py-16 bg-[#0f0f23]">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-10">
+                Frequently Asked Questions
+            </h2>
+
+            <!-- FAQ Accordion -->
+            <div id="faq-container" class="space-y-3">
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span>Question 1?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p>Answer to question 1.</p>
+                    </div>
+                </details>
+                <details class="group bg-white/[0.03] rounded-xl border border-white/[0.08] overflow-hidden">
+                    <summary
+                        class="cursor-pointer px-5 py-4 flex justify-between items-center text-white font-medium hover:bg-white/[0.02]">
+                        <span>Question 2?</span>
+                        <span class="text-white/50 group-open:rotate-180 transition">▼</span>
+                    </summary>
+                    <div class="px-5 pb-4 text-sm text-white/60">
+                        <p>Answer to question 2.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA SECTION ========== -->
+    <section id="final-cta" class="py-20 bg-gradient-to-b from-[#1a1a2e] to-[#0f0f23]">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2
+                class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-red-300 via-pink-300 to-purple-300 bg-clip-text text-transparent mb-4">
+                Ready to Get Started?
+            </h2>
+            <p class="text-white/50 mb-8">
+                Join thousands of happy customers
+            </p>
+
+            <a href="#pricing"
+                class="inline-block px-10 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-orange-400 text-slate-900 font-bold text-lg hover:from-amber-300 hover:to-orange-300 transition-all shadow-lg shadow-orange-500/20 mb-4">
+                Get Product — $49
+            </a>
+
+            <p class="text-white/50 text-xs mt-4">
+                30-day money-back guarantee • Instant access • Lifetime updates
+            </p>
+        </div>
+    </section>
+
+    <!-- Shared Footer -->
+    <div data-component="footer"></div>
+
+    <!-- Components Loader -->
+    <script src="components/components.js"></script>
+
+    <!-- i18n -->
+    <script src="js/i18n.js"></script>
+
+    <!-- Product Content (optional - for dynamic content) -->
+    <script src="js/content/_template.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lang = localStorage.getItem('site_lang') || 'en';
+            if (typeof applyTranslations === 'function') applyTranslations(lang);
+
+            // Apply product content if available
+            if (typeof PRODUCT_CONTENT !== 'undefined') {
+                ['badge', 'name', 'heroDesc', 'price', 'ctaText'].forEach(key => {
+                    const el = document.querySelector(`[data-kit="${key}"]`);
+                    if (el && PRODUCT_CONTENT[key]) {
+                        el.textContent = PRODUCT_CONTENT[key][lang] || PRODUCT_CONTENT[key].en;
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
